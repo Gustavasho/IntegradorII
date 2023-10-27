@@ -1,0 +1,30 @@
+<mat-sidenav-container class="container">
+    <mat-sidenav #sidenav class="sidenav" mode="side" [opened]="sidenavExpanded">
+        <div class="sidenav-place">
+            <div class="sidenav-header">
+                <div class="centered-text">ADMINISTRACIÓN</div>
+            </div>
+            <div class="sidenav-header sidenav-option" (click)="selectRoute(0)">
+                <div class="centered-text"><mat-icon>{{'home'}}</mat-icon>&nbsp;&nbsp;Inicio</div>
+            </div>
+            <div class="sidenav-header sidenav-option" (click)="selectRoute(1)">
+                <div class="centered-text"><mat-icon>{{'article'}}</mat-icon>&nbsp;&nbsp;Actividades</div>
+            </div>
+            <div class="sidenav-header sidenav-option" (click)="selectRoute(2)">
+                <div class="centered-text"><mat-icon>{{'announcement'}}</mat-icon>&nbsp;&nbsp;Ocurrencias</div>
+            </div>
+            <div class="sidenav-header sidenav-option" (click)="selectRoute(3)">
+                <div class="centered-text"><mat-icon>{{'analytics'}}</mat-icon>&nbsp;&nbsp;Reportes</div>
+            </div>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content class="content">
+        <div class="center-button">
+            <button mat-mini-fab color="primary" (click)="toggleSidenav()">
+                <mat-icon>{{ sidenavExpanded ? 'chevron_left' : 'chevron_right' }}</mat-icon>
+            </button>
+        </div>
+        <ng-container *ngIf="index_route === 0"><app-inicio-screen (ruta)="recibirDatos($event)"></app-inicio-screen></ng-container>
+        <ng-container *ngIf="index_route === 1"><app-actividades-screen></app-actividades-screen></ng-container>
+    </mat-sidenav-content>
+</mat-sidenav-container>

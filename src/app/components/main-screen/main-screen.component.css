@@ -1,0 +1,53 @@
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.content{
+    width: 100%;
+    background: url('https://e0.pxfuel.com/wallpapers/512/865/desktop-wallpaper-grey-background-vectors-stock-psd-light-gray.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.center-button {
+    z-index: 1;
+    position: fixed;
+    top: 45vh;
+    margin-left: 2px;
+}
+
+.sidenav {
+    background-color: rgb(32, 32, 119);
+    width: 20%;
+    grid-template-rows: 1fr auto;
+    /* Divide el sidenav en dos filas, con la flecha en la última fila */
+}
+
+.sidenav-place {
+    padding-top: 40px;
+}
+
+.sidenav-header {
+    color: white;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    height: 10vh;
+}
+
+.sidenav-option {
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.sidenav-option:hover {
+    margin-left: 18px;
+    background-color: rgb(99, 162, 204);
+}
+
+.centered-text {
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+}

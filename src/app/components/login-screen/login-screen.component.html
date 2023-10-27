@@ -1,0 +1,32 @@
+<div class="login-container">
+    <div class="left-panel"></div>
+    <div class="right-panel">
+        <mat-card class="login-card">
+            <mat-card-header>
+                <mat-card-title>Iniciar Sesión</mat-card-title>
+            </mat-card-header>
+            <br>
+            <mat-card-content>
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Nombre de usuario" type="text" [(ngModel)]="user">
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Contraseña" [type]="showPassword ? 'text' : 'password'"
+                        [(ngModel)]="password">
+                    <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+                        <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </mat-card-content>
+            <mat-card-actions class="center-button">
+                <button mat-raised-button color="primary" (click)="login()" [disabled]="loading" style="display: flex;">
+                    <ng-container *ngIf="!loading">Iniciar Sesión</ng-container>
+                    <ng-container *ngIf="loading">Autenticando</ng-container>
+                    <mat-progress-spinner style="float: left; margin-right: 10px;" *ngIf="loading" mode="indeterminate"
+                        diameter="20"></mat-progress-spinner>
+                </button>
+            </mat-card-actions>
+            <br>
+        </mat-card>
+    </div>
+</div>
