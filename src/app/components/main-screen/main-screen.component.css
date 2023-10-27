@@ -41,6 +41,11 @@
     transition: 0.3s ease;
 }
 
+.sidenav-option-selected {
+    margin-left: 18px;
+    background-color: rgb(99, 162, 204);
+}
+
 .sidenav-option:hover {
     margin-left: 18px;
     background-color: rgb(99, 162, 204);

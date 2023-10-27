@@ -4,16 +4,16 @@
             <div class="sidenav-header">
                 <div class="centered-text">ADMINISTRACIÓN</div>
             </div>
-            <div class="sidenav-header sidenav-option" (click)="selectRoute(0)">
+            <div [ngClass]="index_route == 0 ? 'sidenav-option-selected' : 'sidenav-option'" class="sidenav-header" (click)="selectRoute(0)">
                 <div class="centered-text"><mat-icon>{{'home'}}</mat-icon>&nbsp;&nbsp;Inicio</div>
             </div>
-            <div class="sidenav-header sidenav-option" (click)="selectRoute(1)">
+            <div [ngClass]="index_route == 1 ? 'sidenav-option-selected' : 'sidenav-option'" class="sidenav-header" class="sidenav-header sidenav-option" (click)="selectRoute(1)">
                 <div class="centered-text"><mat-icon>{{'article'}}</mat-icon>&nbsp;&nbsp;Actividades</div>
             </div>
-            <div class="sidenav-header sidenav-option" (click)="selectRoute(2)">
+            <div [ngClass]="index_route == 2 ? 'sidenav-option-selected' : 'sidenav-option'" class="sidenav-header" class="sidenav-header sidenav-option" (click)="selectRoute(2)">
                 <div class="centered-text"><mat-icon>{{'announcement'}}</mat-icon>&nbsp;&nbsp;Ocurrencias</div>
             </div>
-            <div class="sidenav-header sidenav-option" (click)="selectRoute(3)">
+            <div [ngClass]="index_route == 3 ? 'sidenav-option-selected' : 'sidenav-option'" class="sidenav-header" class="sidenav-header sidenav-option" (click)="selectRoute(3)">
                 <div class="centered-text"><mat-icon>{{'analytics'}}</mat-icon>&nbsp;&nbsp;Reportes</div>
             </div>
         </div>
