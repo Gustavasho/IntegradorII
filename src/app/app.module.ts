@@ -15,6 +15,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
 import { InicioScreenComponent } from './components/inicio-screen/inicio-screen.component';
 import { ActividadesScreenComponent } from './components/actividades-screen/actividades-screen.component';
+import { CrearActividadComponent } from './shared-controls/crear-actividad/crear-actividad.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,8 @@ import { ActividadesScreenComponent } from './components/actividades-screen/acti
     LoginScreenComponent,
     MainScreenComponent,
     InicioScreenComponent,
-    ActividadesScreenComponent
+    ActividadesScreenComponent,
+    CrearActividadComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,10 @@ import { ActividadesScreenComponent } from './components/actividades-screen/acti
     MatIconModule,
     MatProgressSpinnerModule,
     MatSidenavModule,
-    MatDividerModule
+    MatDividerModule,
+    MatProgressBarModule,
+    MatDialogModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

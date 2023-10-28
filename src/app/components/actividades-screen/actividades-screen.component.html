@@ -1,3 +1,17 @@
 <div class="container">
-    <p>asdasdasdasdasd</p>
+    <div class="main-container">
+        <div class="search-container">
+            <mat-form-field style="width: 20%;">
+                <input matInput placeholder="Filtrar Código">
+                <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+            <mat-form-field style="width: 78%;">
+                <input matInput placeholder="Filtrar Nombre">
+                <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+        </div>
+        <div class="button-container">
+            <button mat-raised-button color="primary" (click)="crearActividad()">Nueva Actividad</button>
+        </div>
+    </div>
 </div>

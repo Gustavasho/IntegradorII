@@ -7,11 +7,17 @@ import { Component } from '@angular/core';
 })
 export class MainScreenComponent {
   sidenavExpanded: boolean = true;
-  index_route: number = 0;
+  index_route: number = 1;
   rutaRecibida: string = '';
+  rutas: any[] = [
+    { name: 'Inicio', icon: 'home' },
+    { name: 'Actividades', icon: 'article' },
+    { name: 'Ocurrencias', icon: 'announcement' },
+    { name: 'Reportes', icon: 'analytics' },
+    { name: 'Datos de la empresa', icon: 'dashboard' }
+  ];
 
   recibirDatos(ruta: any) {
-    console.log(ruta);
     this.selectRoute(ruta);
   }
 

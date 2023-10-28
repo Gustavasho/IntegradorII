@@ -4,18 +4,12 @@
             <div class="sidenav-header">
                 <div class="centered-text">ADMINISTRACIÓN</div>
             </div>
-            <div [ngClass]="index_route == 0 ? 'sidenav-option-selected' : 'sidenav-option'" class="sidenav-header" (click)="selectRoute(0)">
-                <div class="centered-text"><mat-icon>{{'home'}}</mat-icon>&nbsp;&nbsp;Inicio</div>
-            </div>
-            <div [ngClass]="index_route == 1 ? 'sidenav-option-selected' : 'sidenav-option'" class="sidenav-header" class="sidenav-header sidenav-option" (click)="selectRoute(1)">
-                <div class="centered-text"><mat-icon>{{'article'}}</mat-icon>&nbsp;&nbsp;Actividades</div>
-            </div>
-            <div [ngClass]="index_route == 2 ? 'sidenav-option-selected' : 'sidenav-option'" class="sidenav-header" class="sidenav-header sidenav-option" (click)="selectRoute(2)">
-                <div class="centered-text"><mat-icon>{{'announcement'}}</mat-icon>&nbsp;&nbsp;Ocurrencias</div>
-            </div>
-            <div [ngClass]="index_route == 3 ? 'sidenav-option-selected' : 'sidenav-option'" class="sidenav-header" class="sidenav-header sidenav-option" (click)="selectRoute(3)">
-                <div class="centered-text"><mat-icon>{{'analytics'}}</mat-icon>&nbsp;&nbsp;Reportes</div>
-            </div>
+            <ng-container *ngFor="let ruta of rutas; let i = index">
+                <div [ngClass]="index_route == i ? 'sidenav-option-selected' : 'sidenav-option'" class="sidenav-header"
+                    (click)="selectRoute(i)">
+                    <div class="centered-text"><mat-icon>{{ruta.icon}}</mat-icon>&nbsp;&nbsp;{{ruta.name}}</div>
+                </div>
+            </ng-container>
         </div>
     </mat-sidenav>
     <mat-sidenav-content class="content">
@@ -24,7 +18,8 @@
                 <mat-icon>{{ sidenavExpanded ? 'chevron_left' : 'chevron_right' }}</mat-icon>
             </button>
         </div>
-        <ng-container *ngIf="index_route === 0"><app-inicio-screen (ruta)="recibirDatos($event)"></app-inicio-screen></ng-container>
+        <ng-container *ngIf="index_route === 0"><app-inicio-screen
+                (ruta)="recibirDatos($event)"></app-inicio-screen></ng-container>
         <ng-container *ngIf="index_route === 1"><app-actividades-screen></app-actividades-screen></ng-container>
     </mat-sidenav-content>
 </mat-sidenav-container>

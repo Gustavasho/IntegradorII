@@ -1,0 +1,35 @@
+<div class="main-container">
+    <ng-container style="display: flex;">
+        <p style="float: left; margin-top: 18px; margin-right: 15px;">Nombre de Actividad</p>
+        <mat-form-field>
+            <input matInput placeholder="Nombre de Actividad">
+        </mat-form-field>
+    </ng-container>
+    <br>
+    <ng-container style="display: flex;">
+        <p style="float: left; margin-top: 18px; margin-right: 15px;">Fecha de Inicio</p>
+        <mat-form-field>
+            <input matInput type="date">
+        </mat-form-field>
+    </ng-container>
+    <br>
+    <ng-container style="display: flex;">
+        <p style="float: left; margin-top: 18px; margin-right: 15px;">Fecha de Fin</p>
+        <mat-form-field>
+            <input matInput type="date">
+        </mat-form-field>
+    </ng-container>
+    <br>
+    <ng-container style="display: flex;">
+        <p style="float: left; margin-top: 18px; margin-right: 15px;">Área</p>
+        <mat-form-field>
+            <mat-label>Seleccione área</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let i of [1, 2, 3]" [value]="i">
+                {{i}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+    </ng-container>
+</div>
