@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-screen',
@@ -7,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class MainScreenComponent {
   sidenavExpanded: boolean = true;
-  index_route: number = 1;
+  index_route: number = 0;
   rutaRecibida: string = '';
   rutas: any[] = [
     { name: 'Inicio', icon: 'home' },
@@ -16,6 +17,8 @@ export class MainScreenComponent {
     { name: 'Reportes', icon: 'analytics' },
     { name: 'Datos de la empresa', icon: 'dashboard' }
   ];
+
+  constructor(private router: Router) { }
 
   recibirDatos(ruta: any) {
     this.selectRoute(ruta);
@@ -27,5 +30,9 @@ export class MainScreenComponent {
 
   selectRoute(index: number) {
     this.index_route = index;
+  }
+
+  cerrarSesion(){
+    this.router.navigate(['/']);
   }
 }

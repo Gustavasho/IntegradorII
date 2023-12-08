@@ -1,17 +1,109 @@
 <div class="container">
     <div class="main-container">
+        <div style="display: flex;margin-left: 0px; margin-top: 0px;">
+            <mat-icon style="transform: scale(1.5); color: rgb(32, 32, 119);">{{'label'}}</mat-icon>
+            <h1 style="margin-top: -2.5px; margin-left: 15px;">Gestión de actividades</h1>
+        </div>
         <div class="search-container">
-            <mat-form-field style="width: 20%;">
-                <input matInput placeholder="Filtrar Código">
-                <mat-icon matSuffix>search</mat-icon>
+            <mat-form-field>
+                <mat-label>Ordenar por:</mat-label>
+                <mat-select [(ngModel)]="filtro_importancia" (selectionChange)="filtrar()">
+                    <mat-option *ngFor="let val of tipos_filtro" [value]="val">{{val}}</mat-option>
+                </mat-select>
             </mat-form-field>
             <mat-form-field style="width: 78%;">
-                <input matInput placeholder="Filtrar Nombre">
+                <input matInput placeholder="Filtrar Nombre" (input)="filtrarPorNombre()" [(ngModel)]="search">
                 <mat-icon matSuffix>search</mat-icon>
             </mat-form-field>
         </div>
-        <div class="button-container">
+        <div class="button-container" *ngIf="userType == 'Administrador'">
             <button mat-raised-button color="primary" (click)="crearActividad()">Nueva Actividad</button>
+        </div>
+        <div class="list-container">
+            <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+                <mat-tree-node *matTreeNodeDef="let node;" matTreeNodePadding class="item-mattree">
+                    <button *ngIf="node.expandable" mat-icon-button matTreeNodeToggle
+                        [attr.aria-label]="'Toggle ' + node.name">
+                        <mat-icon class="mat-icon-rtl-mirror">
+                            {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                        </mat-icon>
+                    </button>
+                    <button mat-icon-button disabled *ngIf="!node.expandable"></button>
+                    <mat-icon *ngIf="!node.isActivity"
+                        style="transform: scale(1.2); color: rgb(32, 32, 119); margin-right: 10px;">{{'label'}}</mat-icon>
+                    <div class="activity-name">
+                        {{node.name}}
+                    </div>
+                    <ng-container *ngIf="node.isActivity">
+                        <div class="percent-bar-parent">
+                            <div class="percent-bar" [ngStyle]="{'width': (350*node.percent).toFixed(0)+'px'}"></div>
+                        </div>
+                        <div class="percent">
+                            {{(100*node.percent).toFixed(0)}}%
+                        </div>
+                    </ng-container>
+
+                    <ng-container *ngIf="!node.isActivity">
+                        <mat-form-field class="select-finished">
+                            <mat-select [(ngModel)]="node.estado" (valueChange)="changeStatus(node)">
+                                <mat-option *ngFor="let status of statuses"
+                                    [value]="status.estado">{{status.status}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </ng-container>
+
+                    <ng-container *ngIf="node.isActivity">
+                        <div style="margin-left: 18px; width: 80px;">
+                            <ng-container *ngIf="node.percent == 1">Completado</ng-container>
+                            <ng-container *ngIf="node.percent < 1">En Proceso</ng-container>
+                        </div>
+                    </ng-container>
+
+                    <ng-container *ngIf="!node.isActivity && node.percent > 0">
+                        <div style="margin-left: 25px; font-size: 16px;">
+                            <mat-icon
+                                style="transform: scale(1.1); margin-bottom: -5px; margin-right: 10px;">warning</mat-icon>Ocurrencias:
+                            {{node.percent}}
+                        </div>
+                    </ng-container>
+
+                    <ng-container *ngIf="node.isActivity">
+                        <div style="margin-left: 18px; width: 130px;">
+                            Importancia: {{node.importancia}}
+                        </div>
+                        <div style="width: 20px; height: 20px; margin-left: 5px;"
+                            [ngStyle]="{'background': node.importancia == 'Alta' ? 'red': node.importancia == 'Media' ? 'yellow' : 'green'}">
+                        </div>
+                    </ng-container>
+
+
+                    <button mat-button [matMenuTriggerFor]="menu" class="three-dot-button">
+                        <mat-icon style="margin-left: 8px;">more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item class="item-button" (click)="openDetails(node)">
+                            <mat-icon>info</mat-icon>
+                            <span class="text-sm">Detalles</span>
+                        </button>
+                        <ng-container *ngIf="userType == 'Administrador'">
+                            <button mat-menu-item class="item-button" (click)="crearSubactividad(node)"
+                                *ngIf="node.isActivity">
+                                <mat-icon>add_box</mat-icon>
+                                <span class="text-sm">Subactividad</span>
+                            </button>
+                            <button mat-menu-item class="item-button" (click)="modificarActividad(node)">
+                                <mat-icon>edit</mat-icon>
+                                <span class="text-sm">Modificar</span>
+                            </button>
+                            <button mat-menu-item class="item-button" (click)="eliminarActividad(node)">
+                                <mat-icon>delete</mat-icon>
+                                <span class="text-sm">Eliminar</span>
+                            </button>
+                        </ng-container>
+
+                    </mat-menu>
+                </mat-tree-node>
+            </mat-tree>
         </div>
     </div>
 </div>

@@ -18,7 +18,21 @@ import { ActividadesScreenComponent } from './components/actividades-screen/acti
 import { CrearActividadComponent } from './shared-controls/crear-actividad/crear-actividad.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTreeModule } from '@angular/material/tree';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { HttpClientModule } from '@angular/common/http';
+import { MatMenuModule } from '@angular/material/menu';
+import { CrearSubactividadComponent } from './shared-controls/crear-subactividad/crear-subactividad.component';
+import { OcurrenciasScreenComponent } from './components/ocurrencias-screen/ocurrencias-screen.component';
+import { CrearOcurrenciaComponent } from './shared-controls/crear-ocurrencia/crear-ocurrencia.component';
+import { RegisterScreenComponent } from './components/register-screen/register-screen.component';
+import { DetailsComponent } from './shared-controls/details/details.component';
+import { ModificarActividadComponent } from './shared-controls/modificar-actividad/modificar-actividad.component';
+import { ModificarSubactividadComponent } from './shared-controls/modificar-subactividad/modificar-subactividad.component';
+import { ModificarOcurrenciaComponent } from './shared-controls/modificar-ocurrencia/modificar-ocurrencia.component';
+import { ReportesScreenComponent } from './components/reportes-screen/reportes-screen.component';
+import { DatosScreenComponent } from './components/datos-screen/datos-screen.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +41,17 @@ import {MatSelectModule} from '@angular/material/select';
     MainScreenComponent,
     InicioScreenComponent,
     ActividadesScreenComponent,
-    CrearActividadComponent
+    CrearActividadComponent,
+    CrearSubactividadComponent,
+    OcurrenciasScreenComponent,
+    CrearOcurrenciaComponent,
+    RegisterScreenComponent,
+    DetailsComponent,
+    ModificarActividadComponent,
+    ModificarSubactividadComponent,
+    ModificarOcurrenciaComponent,
+    ReportesScreenComponent,
+    DatosScreenComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +67,11 @@ import {MatSelectModule} from '@angular/material/select';
     MatDividerModule,
     MatProgressBarModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTreeModule,
+    MatSnackBarModule,
+    HttpClientModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

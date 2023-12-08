@@ -1,0 +1,59 @@
+<div class="login-container">
+    <div class="right-panel">
+        <mat-card class="login-card">
+            <mat-card-header>
+                <mat-card-title>Registrarse</mat-card-title>
+            </mat-card-header>
+            <br>
+            <mat-card-content>
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Nombre de usuario" type="text" [(ngModel)]="user.name">
+                </mat-form-field>
+
+                <mat-form-field style="width: 100%">
+                    <mat-label>Seleccione rol</mat-label>
+                    <mat-select [(ngModel)]="user.rol" (ngModelChange)="cambiarArea()">
+                        <mat-option *ngFor="let i of roles" [value]="i">{{i}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field style="width: 100%" *ngIf="areasEmpresariales.length > 0">
+                    <mat-label>Seleccione área</mat-label>
+                    <mat-select [(ngModel)]="user.area">
+                        <mat-option *ngFor="let i of areasEmpresariales" [value]="i">{{i}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Contraseña" [type]="showPassword ? 'text' : 'password'"
+                        [(ngModel)]="user.password">
+                    <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+                        <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </button>
+                </mat-form-field>
+
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Repetir contraseña" [type]="showPassword ? 'text' : 'password'"
+                        [(ngModel)]="password">
+                    <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+                        <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </mat-card-content>
+            <mat-card-actions class="center-button">
+                <button mat-raised-button color="primary" (click)="register()" [disabled]="loading"
+                    style="display: flex;">
+                    <ng-container *ngIf="!loading">Registrarse</ng-container>
+                    <ng-container *ngIf="loading">Registrando</ng-container>
+                    <mat-progress-spinner style="float: left; margin-right: 10px;" *ngIf="loading" mode="indeterminate"
+                        diameter="20"></mat-progress-spinner>
+                </button>
+
+                <button style="margin-left: 10px;" mat-raised-button (click)="cancelar()">Cancelar</button>
+            </mat-card-actions>
+            <br>
+        </mat-card>
+    </div>
+    <div class="left-panel"></div>
+
+</div>

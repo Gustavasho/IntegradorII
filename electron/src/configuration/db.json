@@ -1,0 +1,26 @@
+{
+  "execute_versions": [
+    "v1"
+  ],
+  "dbname": "GestOcurrencias",
+  "v1": {
+    "create_tables": [
+      "CREATE TABLE IF NOT EXISTS actividad ( id BLOB NOT NULL UNIQUE, name TEXT, importancia TEXT, fecha_inicio TEXT, fecha_fin TEXT, fecha_registro TEXT, area TEXT, estado NUMERIC, porcentaje NUMERIC, registed_by TEXT, status INTEGER, PRIMARY KEY(id) )",
+      "CREATE TABLE IF NOT EXISTS subactividad ( id BLOB NOT NULL UNIQUE, actividad_code BLOB, name TEXT, fecha_inicio TEXT, fecha_fin TEXT, fecha_registro TEXT, estado NUMERIC, cant_ocurrencias NUMERIC, registed_by TEXT, status INTEGER, PRIMARY KEY(id) )",
+      "CREATE TABLE IF NOT EXISTS ocurrencia ( id BLOB NOT NULL UNIQUE, subactividad_code BLOB, actividad_code BLOB, name TEXT, fecha_registro TEXT, detalles TEXT, resuelta NUMERIC, registed_by TEXT, status INTEGER, PRIMARY KEY(id) )",
+      "CREATE TABLE IF NOT EXISTS user ( id BLOB NOT NULL UNIQUE, name TEXT,password TEXT, rol TEXT, area TEXT, status INTEGER, PRIMARY KEY(id) )",
+      "CREATE TABLE IF NOT EXISTS area ( id BLOB NOT NULL UNIQUE, name TEXT, status INTEGER, PRIMARY KEY(id) )"
+    ],
+    "update_tables": [],
+    "delete_tables": [],
+    "update_data": [],
+    "triggers": [],
+    "clean_db": [
+      "DROP TABLE actividad",
+      "DROP TABLE subactividad",
+      "DROP TABLE ocurrencia",
+      "DROP TABLE user",
+      "DROP TABLE area"
+    ]
+  }
+}

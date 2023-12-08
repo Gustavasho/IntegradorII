@@ -27,4 +27,63 @@
 .button-container {
     display: flex;
     justify-content: flex-end;
-  }
+}
+
+.list-container {
+    margin-top: 20px;
+    height: 72%;
+    overflow-y: auto;
+}
+
+.percent-bar-parent {
+    width: 350px;
+    margin-left: 15px;
+    margin-right: 15px;
+    height: 15px;
+    background-color: rgb(214, 214, 214);
+}
+
+.percent {
+    width: 40px;
+}
+
+.percent-bar {
+    height: 100%;
+    background-color: rgb(12, 66, 168);
+}
+
+.activity-name {
+    font-size: 16px;
+    width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 10px;
+}
+
+.select-finished {
+    width: 180px;
+    margin-top: 10px;
+    margin-bottom: -10px;
+}
+
+.mat-tree-node {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.three-dot-button {
+    margin-left: auto;
+    transform: scale(1.2);
+    margin-right: 15px;
+}
+
+.item-button {
+    width: 200px;
+}
+
+.item-mattree {
+    height: 80px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}

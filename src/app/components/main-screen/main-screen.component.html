@@ -2,7 +2,7 @@
     <mat-sidenav #sidenav class="sidenav" mode="side" [opened]="sidenavExpanded">
         <div class="sidenav-place">
             <div class="sidenav-header">
-                <div class="centered-text">ADMINISTRACIÓN</div>
+                <div class="centered-text">PANEL</div>
             </div>
             <ng-container *ngFor="let ruta of rutas; let i = index">
                 <div [ngClass]="index_route == i ? 'sidenav-option-selected' : 'sidenav-option'" class="sidenav-header"
@@ -10,6 +10,9 @@
                     <div class="centered-text"><mat-icon>{{ruta.icon}}</mat-icon>&nbsp;&nbsp;{{ruta.name}}</div>
                 </div>
             </ng-container>
+            <div class="sidenav-header sidenav-header-end" (click)="cerrarSesion()">
+                <div class="centered-text"><mat-icon>exit_to_app</mat-icon>&nbsp;&nbsp;Cerrar sesión</div>
+            </div>
         </div>
     </mat-sidenav>
     <mat-sidenav-content class="content">
@@ -18,8 +21,20 @@
                 <mat-icon>{{ sidenavExpanded ? 'chevron_left' : 'chevron_right' }}</mat-icon>
             </button>
         </div>
-        <ng-container *ngIf="index_route === 0"><app-inicio-screen
-                (ruta)="recibirDatos($event)"></app-inicio-screen></ng-container>
-        <ng-container *ngIf="index_route === 1"><app-actividades-screen></app-actividades-screen></ng-container>
+        <ng-container *ngIf="index_route === 0">
+            <app-inicio-screen (ruta)="recibirDatos($event)"></app-inicio-screen>
+        </ng-container>
+        <ng-container *ngIf="index_route === 1">
+            <app-actividades-screen></app-actividades-screen>
+        </ng-container>
+        <ng-container *ngIf="index_route === 2">
+            <app-ocurrencias-screen></app-ocurrencias-screen>
+        </ng-container>
+        <ng-container *ngIf="index_route === 3">
+            <app-reportes-screen></app-reportes-screen>
+        </ng-container>
+        <ng-container *ngIf="index_route === 4">
+            <app-datos-screen></app-datos-screen>
+        </ng-container>
     </mat-sidenav-content>
 </mat-sidenav-container>

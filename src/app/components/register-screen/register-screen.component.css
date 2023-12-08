@@ -1,0 +1,32 @@
+.login-container {
+    display: flex;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.left-panel {
+    flex: 2.3;
+    background: url('https://academiamaestre.com/wp-content/uploads/2022/06/IMAGEN-1.png') no-repeat center center;
+    background-size: cover;
+}
+
+.right-panel {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-card {
+    max-width: 400px;
+    width: 100%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.center-button {
+    display: flex;
+    justify-content: center;
+  }

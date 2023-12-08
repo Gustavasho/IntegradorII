@@ -1,35 +1,50 @@
 <div class="main-container">
-    <ng-container style="display: flex;">
-        <p style="float: left; margin-top: 18px; margin-right: 15px;">Nombre de Actividad</p>
-        <mat-form-field>
-            <input matInput placeholder="Nombre de Actividad">
-        </mat-form-field>
-    </ng-container>
-    <br>
-    <ng-container style="display: flex;">
-        <p style="float: left; margin-top: 18px; margin-right: 15px;">Fecha de Inicio</p>
-        <mat-form-field>
-            <input matInput type="date">
-        </mat-form-field>
-    </ng-container>
-    <br>
-    <ng-container style="display: flex;">
-        <p style="float: left; margin-top: 18px; margin-right: 15px;">Fecha de Fin</p>
-        <mat-form-field>
-            <input matInput type="date">
-        </mat-form-field>
-    </ng-container>
-    <br>
-    <ng-container style="display: flex;">
-        <p style="float: left; margin-top: 18px; margin-right: 15px;">Área</p>
-        <mat-form-field>
-            <mat-label>Seleccione área</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let i of [1, 2, 3]" [value]="i">
-                {{i}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          
-    </ng-container>
+    <div class="container">
+        <div class="form-row">
+            <p class="label">Nombre de Actividad</p>
+            <mat-form-field>
+                <input matInput placeholder="Nombre de Actividad" [(ngModel)]="actividad.name" required="">
+            </mat-form-field>
+        </div>
+        <div class="form-row">
+            <p class="label">Fecha de Inicio</p>
+            <mat-form-field>
+                <input matInput type="date" name="fechaI" [(ngModel)]="actividad.fecha_inicio">
+            </mat-form-field>
+        </div>
+        <div class="form-row">
+            <p class="label">Fecha de Fin</p>
+            <mat-form-field>
+                <input matInput type="date" name="fechaF" [(ngModel)]="actividad.fecha_fin">
+            </mat-form-field>
+        </div>
+        <div class="form-row">
+            <p class="label">Área</p>
+            <mat-form-field>
+                <mat-label>Seleccione área</mat-label>
+                <mat-select [(ngModel)]="actividad.area">
+                    <mat-option *ngFor="let i of areasEmpresariales" [value]="i">{{i}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="form-row">
+            <p class="label">Importancia</p>
+            <mat-form-field>
+                <mat-label>Seleccione importancia</mat-label>
+                <mat-select [(ngModel)]="actividad.importancia">
+                    <mat-option *ngFor="let lvl of niveles_importancia" [value]="lvl">{{lvl}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="button-container">
+            <button mat-raised-button (click)="cancelar()" style="margin-right: 15px;">Cancelar</button>
+            <button mat-raised-button color="primary" (click)="crearActividad()" [disabled]="loading"
+                style="display: flex;">
+                <ng-container *ngIf="!loading">Registrar actividad</ng-container>
+                <ng-container *ngIf="loading">Registrando actividad</ng-container>
+                <mat-progress-spinner style="float: left; margin-right: 10px;" *ngIf="loading" mode="indeterminate"
+                    diameter="20"></mat-progress-spinner>
+            </button>
+        </div>
+    </div>
 </div>

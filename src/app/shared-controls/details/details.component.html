@@ -1,0 +1,7 @@
+<div class="main-container">
+    <div class="container">
+        <div class="form-row" *ngFor="let key of getObjectKeys(data)">
+            <p class="label">{{ formatKey(key) }}: {{formatValue( data[key] )}}</p>
+        </div>
+    </div>
+</div>

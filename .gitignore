@@ -6,6 +6,10 @@
 /out-tsc
 /bazel-out
 
+# Electron node
+/electron/node_modules
+/electron/release-builds
+
 # Node
 /node_modules
 npm-debug.log

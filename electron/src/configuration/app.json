@@ -1,0 +1,9 @@
+{
+  "autoHideMenuBar": true,
+  "isMaximizable": true,
+  "showDevOptions": true,
+  "width": 1300,
+  "height": 800,
+  "icon": "logo.png",
+  "htmlFile": "index.html"
+}

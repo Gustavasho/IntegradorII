@@ -1,0 +1,26 @@
+<div class="main-container">
+    <div class="container">
+        <div class="form-row">
+            <p class="label">Nombre de Ocurrencia</p>
+            <mat-form-field>
+                <input matInput placeholder="Nombre de Ocurrencia" [(ngModel)]="data.name" required="">
+            </mat-form-field>
+        </div>
+        <div class="form-row">
+            <p class="label">Comentarios</p>
+            <mat-form-field>
+                <textarea matInput placeholder="Detalles" [(ngModel)]="data.detalles" required></textarea>
+            </mat-form-field>
+        </div>
+        <div class="button-container">
+            <button mat-raised-button (click)="cancelar()" style="margin-right: 15px;">Cancelar</button>
+            <button mat-raised-button color="primary" (click)="update(data)" [disabled]="loading"
+                style="display: flex;">
+                <ng-container *ngIf="!loading">Modificar ocurrencia</ng-container>
+                <ng-container *ngIf="loading">Modificando ocurrencia</ng-container>
+                <mat-progress-spinner style="float: left; margin-right: 10px;" *ngIf="loading" mode="indeterminate"
+                    diameter="20"></mat-progress-spinner>
+            </button>
+        </div>
+    </div>
+</div>

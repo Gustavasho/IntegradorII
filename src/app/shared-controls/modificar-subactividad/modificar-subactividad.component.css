@@ -1,0 +1,27 @@
+.main-container {
+    width: 500px;
+    height: 410px;
+    justify-content: space-between;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 40px;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.label {
+    flex: 0 0 150px;
+    margin-right: 15px;
+}
+
+.container {
+    padding: 40px 40px 0px 50px;
+}

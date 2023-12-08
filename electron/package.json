@@ -1,0 +1,29 @@
+{
+  "name": "electron",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "jest --env=node",
+    "start": "electron main.js",
+    "start-dev": "electron main.js"
+  },
+  "author": "gustavo ugaz",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^29.5.5",
+    "electron": "^26.4.1",
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3",
+    "ts-jest": "^29.1.1"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "gopro-telemetry": "^1.2.1",
+    "gpmf-extract": "^0.3.1",
+    "moment": "^2.29.4",
+    "sqlite3": "^5.1.6",
+    "unzipper": "^0.10.14",
+    "uuid": "^9.0.1"
+  }
+}

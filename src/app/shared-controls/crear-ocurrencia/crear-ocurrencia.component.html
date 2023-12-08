@@ -1,0 +1,28 @@
+<div class="main-container">
+    <div class="container">
+        <h2 style="margin-bottom: 25px;">Subactividad: {{data.name}}</h2>
+        <!-- <h2 style="margin-bottom: 25px;">Actividad: {{data.id}}</h2> -->
+        <div class="form-row">
+            <p class="label">Nombre de Ocurrencia</p>
+            <mat-form-field>
+                <input matInput placeholder="Nombre de Ocurrencia" [(ngModel)]="ocurrencia.name" required="">
+            </mat-form-field>
+        </div>
+        <div class="form-row">
+            <p class="label">Comentarios</p>
+            <mat-form-field>
+                <textarea matInput placeholder="Detalles" [(ngModel)]="ocurrencia.detalles" required></textarea>
+            </mat-form-field>
+        </div>
+        <div class="button-container">
+            <button mat-raised-button (click)="cancelar()" style="margin-right: 15px;">Cancelar</button>
+            <button mat-raised-button color="primary" (click)="crearOcurrencia()" [disabled]="loading"
+                style="display: flex;">
+                <ng-container *ngIf="!loading">Registrar ocurrencia</ng-container>
+                <ng-container *ngIf="loading">Registrando ocurrencia</ng-container>
+                <mat-progress-spinner style="float: left; margin-right: 10px;" *ngIf="loading" mode="indeterminate"
+                    diameter="20"></mat-progress-spinner>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="main-container">
+        <div style="display: flex;margin-left: 0px; margin-top: 0px;">
+            <mat-icon style="transform: scale(1.5); color: rgb(32, 32, 119);">{{'label'}}</mat-icon>
+            <h1 style="margin-top: -2.5px; margin-left: 15px;">Gestión de ocurrencias</h1>
+        </div>
+        <div class="search-container">
+            <mat-form-field style="width: 49%;">
+                <mat-label>Seleccione Actividad:</mat-label>
+                <mat-select [(ngModel)]="actividad_selected" (selectionChange)="filtrarSubactividades()">
+                    <mat-option *ngFor="let val of actividades" [value]="val">{{val.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field style="width: 49%;" *ngIf="actividad_selected.name != ''">
+                <mat-label>Seleccione Subactividad:</mat-label>
+                <mat-select [(ngModel)]="subactividad_selected" (selectionChange)="filtrarOcurrencias()">
+                    <mat-option *ngFor="let val of subactividades" [value]="val">{{val.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="button-container">
+            <button style="margin-right: 10px;" mat-raised-button color="primary" (click)="reiniciarFiltro()">Reiniciar
+                filtro</button>
+            <button mat-raised-button [disabled]="subactividad_selected.name == ''" color="primary"
+                (click)="crearOcurrencia()" *ngIf="userType == 'Administrador'">Nueva Ocurrencia</button>
+
+        </div>
+
+        <div class="list-container">
+            <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+                <mat-tree-node *matTreeNodeDef="let node;" matTreeNodePadding class="item-mattree">
+
+                    <div class="activity-name">
+                        {{node.name}}
+                    </div>
+
+                    <div class="date-name">
+                        {{node.fecha | date:'dd/MM/yyyy hh:mm'}}
+                    </div>
+
+                    <mat-form-field class="select-finished">
+                        <mat-select [(ngModel)]="node.resuelta" (valueChange)="changeStatus(node)">
+                            <mat-option *ngFor="let status of statuses"
+                                [value]="status.estado">{{status.status}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <button mat-button [matMenuTriggerFor]="menu" class="three-dot-button">
+                        <mat-icon style="margin-left: 8px;">more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item class="item-button" (click)="detalles(node)">
+                            <mat-icon>info</mat-icon>
+                            <span class="text-sm">Detalles</span>
+                        </button>
+                        <ng-container *ngIf="userType == 'Administrador'">
+                            <button mat-menu-item class="item-button" (click)="modificarOcurrencia(node)">
+                                <mat-icon>edit</mat-icon>
+                                <span class="text-sm">Modificar</span>
+                            </button>
+                            <button mat-menu-item class="item-button" (click)="deleteo(node)">
+                                <mat-icon>delete</mat-icon>
+                                <span class="text-sm">Eliminar</span>
+                            </button>
+                        </ng-container>
+                    </mat-menu>
+                </mat-tree-node>
+            </mat-tree>
+        </div>
+
+    </div>
+</div>
