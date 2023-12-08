@@ -89,7 +89,6 @@ export class OcurrenciasScreenComponent implements OnInit {
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('usuario') || '{}');
     this.userType = this.user.rol;
-    console.log(this.userType);
     this.list();
   }
 
